@@ -130,11 +130,31 @@ OAI_Dalin<-function(Rrs_spec,wave_min,wave_max,wave_int){
 	names(OAI)<-"Oxy_peak_height"
 	#names(turbid)<-"turbid"
 	#return(c(tmp_out,turbid,OAI))
+	
+	
+	
 	return(OAI)
 }
 
 
+## Added by Daniel Maciel 
 
+flag_creation = function(oxygen_peak) {
+  
+  OAI = data.frame(oxygen_peak)
+  
+  OAI$flag = 0
+  
+  OAI[is.na(OAI$Oxy_peak_height), 'Oxy_peak_height'] = 0
+  
+  OAI[OAI$Oxy_peak_height > 0.1, 'flag'] = 1
+  OAI[OAI$Oxy_peak_height < -0.1, 'flag'] = 1
+  
+  
+  return(OAI[,c('GLORIA_ID', 'flag')])
+  
+  
+}
 
 #------------------------------------------- processing chain---------------------------------------------
 
