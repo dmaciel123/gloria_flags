@@ -16,12 +16,11 @@ source('R/baseline_shift.R')
 source('R/Oxygen_peak_calculation_updated_Dalin_20220908[69].R')
 source('R/UV_Slope.R')
 
-#This ID is the GLORIA_RRS Sheet on Google Drive. If the ID changes, the user
-#Should change the string to a new one. 
+#Read the Gloria Rrs file in .CSV format. 
+gloria_rrs = fread(file = 'Data/GLORIA_Rrs.csv')
 
-id <- "17MonrXCgAkIOof-f9xuxxVYC-clu2m4W" # google file ID
 
-gloria_rrs = fread(sprintf("https://docs.google.com/uc?id=%s&export=download", id))
+#Basline Calculation
 
 negatives = negative_slopes(gloria_rrs =  gloria_rrs)
 baseline = baseline_shift(gloria_rrs =  gloria_rrs)
@@ -30,6 +29,8 @@ baseline_shifts = merge_baseline_negative(GLORIA_ID = negatives$GLORIA_ID,
                                         baseline = baseline$baseline, 
                                         negative = negatives$negative_slopes)
 
+
+#Oxygen Peak Calculation
 oxygen_peak <- data.frame(GLORIA_ID=gloria_rrs$GLORIA_ID, 
                      Oxy_peak_height = apply(select(gloria_rrs, 
                                                     paste("Rrs_",seq(350,900),sep="")),1,
@@ -37,8 +38,13 @@ oxygen_peak <- data.frame(GLORIA_ID=gloria_rrs$GLORIA_ID,
                                                     wave_max=900,wave_int=1)) %>% flag_creation()
 
 
+#Noise Red Edge Calculation
 NOISE_RED_EDGE = noise_red_edge(gloria_rrs = gloria_rrs)
+
+#Noise UV Edge Calculation
 NOISE_UV_EDGE = noise_uv_edge(gloria_rrs = gloria_rrs)
+
+#Slope UV calculation
 SLOPE_UV = slope_uv(gloria_rrs = gloria_rrs)
 
 
