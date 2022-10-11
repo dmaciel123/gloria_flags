@@ -11,7 +11,7 @@ git clone https://github.com/dmaciel123/gloria_flags.git
 
 ```
 
-Please note that in the main function (Run.R) the data used as input feature is the GLORIA Rrs from the Google Drive shared folder. If the file changes or the link to the file changes, the users should change the Google Drive ID. More information about Google Drive ID could be found here: https://docs.meiro.io/books/meiro-integrations/page/where-can-i-find-the-file-id-on-google-drive
+Please note that in the main function (Run.R) the data used as input feature is the GLORIA Rrs. There is an example file added in 11/10/2022. 
 
 The following methods are implemented in the project:
 
