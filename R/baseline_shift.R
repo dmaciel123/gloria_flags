@@ -10,15 +10,7 @@
 # of negative values in this spectral region (>50%), a large percentage of negative values at Rrs >765 nm (>70%), 
 # or at least 20 negative values at Rrs <450 nm.
 
-#Loading require packages
 
-require(dplyr)
-require(reshape2)
-require(data.table)
-require(tidyr)
-require(googlesheets4)
-require(data.table)
-require(curl)
 
 
 ### Function for calculating negative slopes

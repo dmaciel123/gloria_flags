@@ -1,14 +1,11 @@
 slope_uv = function(gloria_rrs) {
 
-  # detect decreasing Rrs from 350-400 nm
-  # return a logical vector with 1 where slope is more negative than the
-  # threshold, and the actual slope value.
+  # Detect decreasing Rrs from 350-420 nm
+  # Return a logical vector with 1 where slope is more negative than the
+  # Threshold, and the actual slope value.
 
   # threshold = -0.005;
 
-  require(polyreg)
-  require(Metrics)
-  
   rrs = gloria_rrs[,-1]
   
   WAVE = c(350:900)
@@ -49,7 +46,7 @@ slope_uv = function(gloria_rrs) {
     
     if(nrow(DF.filter) != length(LIMITS)) {
       
-      SLOPE$flag[i] = 0
+      SLOPE$flag[i] = NA
       
       print('Size Different from limits. Not accounting for noisy')
       
@@ -86,9 +83,6 @@ slope_uv = function(gloria_rrs) {
 
 noise_red_edge = function(gloria_rrs) {
   
-  require(polyreg)
-  require(Metrics)
-  
   rrs = gloria_rrs[,-1]
   
   WAVE = c(350:900)
@@ -110,11 +104,14 @@ noise_red_edge = function(gloria_rrs) {
                                      RMSE = 0,
                                      flag = 0)
   
-  noise_thresh = 0.2
   
 
-
+  #Threshold
+  noise_thresh = 0.2
+  
   for(i in 1:nrow(qc_flag_noisy_rededge)) {
+
+    
     
     
     DF = data.frame(WV = c(350:900), 
@@ -126,7 +123,7 @@ noise_red_edge = function(gloria_rrs) {
     
     if(nrow(DF.filter) != length(red_edge_limits)) {
       
-      qc_flag_noisy_rededge$flag[i] = 0
+      qc_flag_noisy_rededge$flag[i] = NA
       
       print('Size Different from limits. Not accounting for noisy')
       
@@ -163,8 +160,7 @@ noise_red_edge = function(gloria_rrs) {
 
 noise_uv_edge = function(gloria_rrs) {
   
-  require(polyreg)
-  require(Metrics)
+  
   
   rrs = gloria_rrs[,-1]
   
@@ -187,9 +183,11 @@ noise_uv_edge = function(gloria_rrs) {
                                      RMSE = 0,
                                      flag = 0)
   
-  
+  #Threshold
+  noise_thresh = 0.15
   
   for(i in 1:nrow(qc_flag_noisy_UV)) {
+    
     
     
     DF = data.frame(WV = c(350:900), 
@@ -198,17 +196,14 @@ noise_uv_edge = function(gloria_rrs) {
     
     DF.filter = filter(DF, WV >= min(uv_limits) & WV <= max(uv_limits)) %>% na.omit()
     
-    
-    ### Copying the code from Moritz here. 
-    ## In the case, Matlab code check upper and lower values to see if is NA
-    
+
 
     LIMITS = rbind(min = filter(DF.filter, WV == 350),
                         max = filter(DF.filter, WV == 400)) %>% dim()
     
     if(LIMITS[1] != 2) {
       
-      qc_flag_noisy_UV$flag[i] = 0
+      qc_flag_noisy_UV$flag[i] = NA
       
       print('Size Different from limits. Not accounting for noisy')
       
