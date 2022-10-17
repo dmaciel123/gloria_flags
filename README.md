@@ -1,8 +1,8 @@
 # GLORIA Flags
 
-This project is inteended to provide the scripts that run the FLAGS for the GLORIA dataset (Lehmann et al. 2022). These flags were created to exclude or warning determined spectra. 
+This project provides the scripts that run the flagging for the GLORIA dataset (Lehmann et al. 2022). These flags were created to serve as a note of caution on suspicious spectra. 
 
-For running the scripts, the Run.R files is used. The functions to calculate the flags for each of the QC_Control in GLORIA table is provided. 
+For running the scripts, the Run.R file is used. The previously unpublished functions to calculate each of the quality control flags in the GLORIA table are provided together with this file. 
 
 To clone the repository you can use the following command:
 
@@ -11,9 +11,9 @@ git clone https://github.com/dmaciel123/gloria_flags.git
 
 ```
 
-Please note that in the main function (Run.R) the data used as input feature is the GLORIA Rrs. There is an example file added in 11/10/2022. 
+Please note that in the main function, representing the Run.R file, the data used as input feature is the GLORIA_Rrs.csv file. There is an example file added in 11/10/2022.
 
-The following methods are implemented in the project:
+The following methods are implemented in this project:
 
 # Baseline Shift
 
