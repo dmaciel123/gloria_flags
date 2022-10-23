@@ -150,7 +150,7 @@ flag_creation = function(oxygen_peak) {
   OAI[OAI$Oxy_peak_height > 0.1, 'flag'] = 1
   OAI[OAI$Oxy_peak_height < -0.1, 'flag'] = 1
   
-  OAI[OAI$Oxy_peak_height == 0, 'Oxy_peak_height'] = NA
+  OAI[OAI$Oxy_peak_height == 0, 'Oxy_peak_height'] = NaN
   
   return(OAI[,c('GLORIA_ID','Oxy_peak_height', 'flag')])
   

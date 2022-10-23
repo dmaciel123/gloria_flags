@@ -46,7 +46,7 @@ slope_uv = function(gloria_rrs) {
     
     if(nrow(DF.filter) != length(LIMITS)) {
       
-      SLOPE$flag[i] = NA
+      SLOPE$flag[i] = NaN
       
       print('Size Different from limits. Not accounting for noisy')
       
@@ -123,7 +123,7 @@ noise_red_edge = function(gloria_rrs) {
     
     if(nrow(DF.filter) != length(red_edge_limits)) {
       
-      qc_flag_noisy_rededge$flag[i] = NA
+      qc_flag_noisy_rededge$flag[i] = NaN
       
       print('Size Different from limits. Not accounting for noisy')
       
@@ -203,7 +203,7 @@ noise_uv_edge = function(gloria_rrs) {
     
     if(LIMITS[1] != 2) {
       
-      qc_flag_noisy_UV$flag[i] = NA
+      qc_flag_noisy_UV$flag[i] = NaN
       
       print('Size Different from limits. Not accounting for noisy')
       
