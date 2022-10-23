@@ -41,3 +41,4 @@ Spectra with high-frequency variability, potentially instrument noise, near the 
 
 Spectra with negative slopes in the ultraviolet (UV) and blue end: The spectra were standardized to zero mean and unit standard deviation. A straight line was fitted over the interval 350-420 nm and spectra with slopes <-0.005 were flagged. This threshold was determined using visual inspection of the distribution of slope values with respect to spectral shapes.
 
+

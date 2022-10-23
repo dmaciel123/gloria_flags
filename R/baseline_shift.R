@@ -49,7 +49,7 @@ negative_slopes = function(gloria_rrs) {
       
       rrs.slope = select(gloria_rrs, contains(paste('Rrs_', 765:900, sep = '')))
       
-      results$slope_nir = NA
+      results$slope_nir = NaN
       
       
       print('Calculating Slope')
