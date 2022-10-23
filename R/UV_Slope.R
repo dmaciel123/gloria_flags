@@ -2,7 +2,7 @@ slope_uv = function(gloria_rrs) {
 
   # Detect decreasing Rrs from 350-420 nm
   # Return a logical vector with 1 where slope is more negative than the
-  # Threshold, and the actual slope value.
+  # threshold, and the actual slope value.
 
   # threshold = -0.005;
 
