@@ -41,7 +41,7 @@ NOISE_RED_EDGE = noise_red_edge(gloria_rrs = gloria_rrs)
 
 #Noise UV Edge Calculation
 NOISE_UV_EDGE = noise_uv_edge(gloria_rrs = gloria_rrs)
-
+ 
 #Slope UV calculation
 SLOPE_UV = slope_uv(gloria_rrs = gloria_rrs)
 
