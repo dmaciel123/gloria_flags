@@ -41,7 +41,7 @@ NOISE_RED_EDGE = noise_red_edge(gloria_rrs = gloria_rrs)
 
 #Noise UV Edge Calculation
 NOISE_UV_EDGE = noise_uv_edge(gloria_rrs = gloria_rrs)
-
+ 
 #Slope UV calculation
 SLOPE_UV = slope_uv(gloria_rrs = gloria_rrs)
 
@@ -55,10 +55,17 @@ filter(NOISE_RED_EDGE, flag == 1) %>% nrow()
 filter(NOISE_UV_EDGE, flag == 1) %>% nrow() 
 filter(SLOPE_UV, flag == 1) %>% nrow() 
 
+
+baseline_shifts
+oxygen_peak$Oxy_peak_height
+NOISE_RED_EDGE$flag
+NOISE_UV_EDGE$flag
+SLOPE_UV$flag
+
 #Save results
 
-write.csv(file = 'Outputs/baseline_shift.csv', x = baseline_shifts)
-write.csv(file = 'Outputs/oxygen_peak.csv', x = oxygen_peak)
-write.csv(file = 'Outputs/noise_red_edge.csv', x = NOISE_RED_EDGE)
-write.csv(file = 'Outputs/noise_uv_edge.csv', x = NOISE_UV_EDGE)
-write.csv(file = 'Outputs/slope_UV.csv', x = SLOPE_UV)
+write.csv(file = 'Outputs/baseline_shift.csv', x = baseline_shifts, na = 'NaN')
+write.csv(file = 'Outputs/oxygen_peak.csv', x = oxygen_peak, na = 'NaN')
+write.csv(file = 'Outputs/noise_red_edge.csv', x = NOISE_RED_EDGE, na = 'NaN')
+write.csv(file = 'Outputs/noise_uv_edge.csv', x = NOISE_UV_EDGE, na = 'NaN')
+write.csv(file = 'Outputs/slope_UV.csv', x = SLOPE_UV, na = 'NaN')
