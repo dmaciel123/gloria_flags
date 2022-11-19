@@ -1,8 +1,11 @@
 # GLORIA Flags
 
-This project provides the scripts that run the flagging for the GLORIA dataset (Lehmann et al. 2022). These flags were created to serve as a note of caution on suspicious spectra. 
+This project provides the R scripts to perform quality flagging on the GLORIA dataset of global inland and coastal remote sensing reflectance spectra. The dataset is hosted at PANGAEOA (INSERT DOI) and further details are provided in the accompanying publication:
+Lehmann, Gurlin, Pahlevan, et al. FULL CITATION TO FOLLOW
 
-For running the scripts, the Run.R file is used. The previously unpublished functions to calculate each of the quality control flags in the GLORIA table are provided together with this file. 
+The flags are described below as per Table 3 (section 'Technical validation') in the above citation. The GLORIA quality flags are to alert the user to potential quality issues, but are not meant as a definitive quality judgement.  
+
+The scripts can be run using the Run.R file. 
 
 To clone the repository you can use the following command:
 
@@ -11,7 +14,9 @@ git clone https://github.com/dmaciel123/gloria_flags.git
 
 ```
 
-Please note that in the main function, representing the Run.R file, the data used as input feature is the GLORIA_Rrs.csv file. There is an example file added in 11/10/2022.
+Note that the input data loaded by the driver function (Run.R) has to be obtained from the online repository described in the first paragraph of this file. 
+
+# Comment by Moritz: Can you modify Run.R to read the Rrs tab from the Excel spreadsheet GLORIA_global_remote_sensing_reflectance_radiometry.xlsx?
 
 The following methods are implemented in this project:
 

@@ -1,3 +1,7 @@
+# This function is called by Run.R to calculate the Negative_uv_slope flag on GLORIA Rrs spectra
+# Refer to README.md for a description of the method.
+
+
 slope_uv = function(gloria_rrs) {
 
   # Detect decreasing Rrs from 350-420 nm

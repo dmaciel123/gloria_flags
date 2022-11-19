@@ -1,14 +1,6 @@
 
-#This script will run the Baseline Higher/lower  thresholds on GLORIA Rrs spectra
-
-############## Information about the methods ########
-# Spectra which appear to be shifted above or below the zero line: Spectra shifted 
-# ‘up’ are those where the minimum of the spectrum is a large percentage (58.66%) 
-# of its median (upper whisker of boxplot - higher than distance between 3rd quartile + 1.5*IQR). 
-# Spectra shifted ‘down’ are those with at least 20 negative values and either a clear negative 
-# linear slope in the interval 765-900 nm (-8.664468 * 10-7) (< 1st quartile) and a moderate percentage 
-# of negative values in this spectral region (>50%), a large percentage of negative values at Rrs >765 nm (>70%), 
-# or at least 20 negative values at Rrs <450 nm.
+# This script is called by Run.R to calculate the Baseline_shift flag on GLORIA Rrs spectra
+# Refer to README.md for a description of the method.
 
 
 
@@ -120,7 +112,7 @@ baseline_shift = function(gloria_rrs) {
       rrs_counts = paste('Rrs', 400:900, sep = '_')
       
       
-      #Min and Median spectra functions without NA
+      #Min and median spectra functions without NA
       min.na = function(x) {return(min(x, na.rm = T))}
       median.na = function(x) { return(median(x, na.rm = T))}
       
@@ -129,7 +121,7 @@ baseline_shift = function(gloria_rrs) {
       baseline$median = apply(X = select(gloria_rrs, contains(rrs_counts)), MARGIN = 1, FUN = median.na)
       
       
-      #Baseline calculation (Median spectra - baseline) / baseline * 100
+      #Baseline calculation (median spectra - baseline) / baseline * 100
       baseline$BASELINE_by_median = baseline$min/baseline$median*100
       
       #Baseline boxplot calculation
@@ -137,6 +129,9 @@ baseline_shift = function(gloria_rrs) {
       
       #Filter by higher whisker of boxplot
       baseline.filter = filter(baseline, BASELINE_by_median > bx_median$stats[5,])
+      
+      # Comment by Moritz: Use 60% of baseline shift for flagging. But keep the above calculation and create a variable holding the threshold value of 58.xx% for reference
+      # DELETE ABOVE COMMENT WHEN COMPLETE
       
       #create the dataframe to store the results 
       baseline.results= data.frame(GLORIA_ID = gloria_rrs$GLORIA_ID, baseline = 0)

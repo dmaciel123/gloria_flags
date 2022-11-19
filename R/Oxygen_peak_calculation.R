@@ -1,4 +1,4 @@
-# this code is to calculate the Oxygen peak height at around 762 nm for in situ measured remote sensing reflectance(Rrs) spectra
+# This script is called by Run.R to calculate calculates the oxygen peak height at around 762 nm on GLORIA Rrs spectra
 #
 # OAI: Oxygen absorption peak index
 # equation: OAI=Rrs762-Rrs750-(Rrs780-Rrs750)*(762-750)/(780-750)

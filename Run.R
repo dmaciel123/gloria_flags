@@ -18,6 +18,7 @@ source('R/Oxygen_peak_calculation.R')
 source('R/UV_Slope.R')
 
 #Read the Gloria Rrs file in .csv format
+# Comment by Moritz: Please change this to read the Rrs tab from GLORIA_global_remote_sensing_reflectance_radiometry.xlsx
 gloria_rrs = fread(file = 'Data/GLORIA_Rrs.csv')
 
 
