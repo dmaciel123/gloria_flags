@@ -1,3 +1,6 @@
+# This is the driver script to calculate the quality control flags on the GLORIA Rrs spectra
+# Refer to README.md for a description of the method.
+
 #Loading Required Packages
 
 require(dplyr)
@@ -8,8 +11,6 @@ require(data.table)
 require(curl)
 require(polyreg)
 require(Metrics)
-
-#Loading require packages
 
 #Loading users function
 
