@@ -46,7 +46,7 @@ slope_uv = function(gloria_rrs) {
     
     
     DF.filter = filter(DF, WV >= min(LIMITS) & WV <= max(LIMITS)) %>% na.omit()
-    
+    names(DF.filter)[2] = 'Rrs'
     
     if(nrow(DF.filter) != length(LIMITS)) {
       
@@ -139,7 +139,7 @@ noise_red_edge = function(gloria_rrs) {
       POLY = polyFit(xy = DF.filter, deg = 4)
       PREDICTION = predict(POLY, newdata = DF.filter$WV)
       
-      qc_flag_noisy_rededge$RMSE[i] = rmse(actual = DF.filter$Rrs, 
+      qc_flag_noisy_rededge$RMSE[i] = rmse(actual = DF.filter[,2], 
                   predicted = PREDICTION)
       
     
@@ -219,8 +219,9 @@ noise_uv_edge = function(gloria_rrs) {
       POLY = polyFit(xy = DF.filter, deg = 4)
       PREDICTION = predict(POLY, newdata = DF.filter$WV)
       
-      qc_flag_noisy_UV$RMSE[i] = rmse(actual = DF.filter$Rrs, 
-                                           predicted = PREDICTION)
+      qc_flag_noisy_UV$RMSE[i] = rmse(actual = DF.filter[,2], 
+                                      predicted = PREDICTION)
+      
       
       
       print('RMSE Calculated')

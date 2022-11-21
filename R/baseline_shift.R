@@ -75,7 +75,7 @@ negative_slopes = function(gloria_rrs) {
       
       
       #Select values when 90% of Rrs in NIR region are negative
-      perc_negative_90 = filter(filtro_neg_20, Percentage_negative > 70)
+      perc_negative_70 = filter(filtro_neg_20, Percentage_negative > 70)
       perc_negative_50 = filter(filtro_neg_20, Percentage_negative > 50 & slope_nir < bx$stats[2,])
       
       
@@ -85,7 +85,7 @@ negative_slopes = function(gloria_rrs) {
       
       
       ## Merge the results
-      results.merge = rbind(negative_nir_slope, filtro_blue_neg,perc_negative_90,perc_negative_50)
+      results.merge = rbind(negative_nir_slope, filtro_blue_neg,perc_negative_70,perc_negative_50)
       results.merge = results.merge[order(results.merge$id),]
       
       #Remove duplicates
@@ -121,7 +121,8 @@ baseline_shift = function(gloria_rrs) {
       baseline$median = apply(X = select(gloria_rrs, contains(rrs_counts)), MARGIN = 1, FUN = median.na)
       
       
-      #Baseline calculation (median spectra - baseline) / baseline * 100
+      #Baseline calculation (min Rrs / median Rrs)  * 100
+    
       baseline$BASELINE_by_median = baseline$min/baseline$median*100
       
       #Baseline boxplot calculation
@@ -130,14 +131,14 @@ baseline_shift = function(gloria_rrs) {
       #Filter by higher whisker of boxplot
       baseline.filter = filter(baseline, BASELINE_by_median > bx_median$stats[5,])
       
-      # Comment by Moritz: Use 60% of baseline shift for flagging. But keep the above calculation and create a variable holding the threshold value of 58.xx% for reference
-      # DELETE ABOVE COMMENT WHEN COMPLETE
+      #Filter by 60%
+      baseline.filter_60 = filter(baseline, BASELINE_by_median > 60)
       
       #create the dataframe to store the results 
       baseline.results= data.frame(GLORIA_ID = gloria_rrs$GLORIA_ID, baseline = 0)
       
       #Results
-      baseline.results[baseline.results$GLORIA_ID %in% baseline.filter$ID, 'baseline'] = 1
+      baseline.results[baseline.results$GLORIA_ID %in% baseline.filter_60$ID, 'baseline'] = 1
       
       return(baseline.results)
 

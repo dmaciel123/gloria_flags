@@ -11,6 +11,7 @@ require(data.table)
 require(curl)
 require(polyreg)
 require(Metrics)
+require(openxlsx)
 
 #Loading users function
 
@@ -18,9 +19,9 @@ source('R/baseline_shift.R')
 source('R/Oxygen_peak_calculation.R')
 source('R/UV_Slope.R')
 
-#Read the Gloria Rrs file in .csv format
-# Comment by Moritz: Please change this to read the Rrs tab from GLORIA_global_remote_sensing_reflectance_radiometry.xlsx
-gloria_rrs = fread(file = 'Data/GLORIA_Rrs.csv')
+#Read the Gloria Rrs file in Excel format
+
+gloria_rrs = openxlsx::read.xlsx('GLORIA_global_remote_sensing_reflectance_radiometry.xlsx', sheet = 'Rrs')
 
 
 #Basline Calculation
