@@ -1,6 +1,6 @@
 # GLORIA Flags
 
-This project provides the R scripts to perform quality flagging on the GLORIA dataset of global inland and coastal remote sensing reflectance spectra. The dataset is hosted at PANGAEOA (INSERT DOI) and further details are provided in the accompanying publication:
+This project provides the R scripts to perform quality flagging on the GLORIA dataset of global inland and coastal remote sensing reflectance spectra. The dataset is hosted at PANGAEA Data Publisher for Earth & Environmental Science (https://doi.pangaea.de/10.1594/PANGAEA.948492) and further details are provided in the accompanying publication:
 Lehmann, Gurlin, Pahlevan, et al. FULL CITATION TO FOLLOW
 
 The flags are described below as per Table 3 (section 'Technical validation') in the above citation. The GLORIA quality flags are to alert the user to potential quality issues, but are not meant as a definitive quality judgement.  

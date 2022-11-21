@@ -20,7 +20,7 @@ source('R/Oxygen_peak_calculation.R')
 source('R/UV_Slope.R')
 
 #Read the Gloria Rrs file in Excel format
-
+# SORRY, DANIEL: PLEASE ADD  CSV FILE READING (leave teh Excel file reading in comment, maybe). 
 gloria_rrs = openxlsx::read.xlsx('GLORIA_global_remote_sensing_reflectance_radiometry.xlsx', sheet = 'Rrs')
 
 
