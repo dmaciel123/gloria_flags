@@ -16,9 +16,7 @@ git clone https://github.com/dmaciel123/gloria_flags.git
 
 Note that the input data loaded by the driver function (Run.R) has to be obtained from the online repository described in the first paragraph of this file. 
 
-# Comment by Moritz: Can you modify Run.R to read the Rrs tab from the Excel spreadsheet GLORIA_global_remote_sensing_reflectance_radiometry.xlsx?
-
-The following methods are implemented in this project:
+The following methods are implemented:
 
 # Baseline Shift
 
