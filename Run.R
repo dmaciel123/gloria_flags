@@ -72,22 +72,22 @@ write.csv(file = 'Outputs/slope_UV.csv', x = SLOPE_UV, na = 'NaN')
 
 final_results = data.frame(GLORIA_ID = baseline_shifts$GLORIA_ID, 
                            Baseline_shift = baseline_shifts$Baseline_shift, 
-                           Oxygen_Peak = oxygen_peak$flag, 
-                           Noisy_RedEdge = NOISE_RED_EDGE$flag,
-                           Noisy_Uv = NOISE_UV_EDGE$flag, 
-                           Slope_UV = SLOPE_UV$flag)
+                           Oxygen_signal = oxygen_peak$flag, 
+                           Noisy_red = NOISE_RED_EDGE$flag,
+                           Noisy_blue = NOISE_UV_EDGE$flag, 
+                           Negative_uv_slope = SLOPE_UV$flag)
 
 # Check Final Results 
 
 filter(final_results, Baseline_shift == 1) %>% nrow() 
-filter(final_results, Oxygen_Peak == 1) %>% nrow() 
-filter(final_results, Noisy_RedEdge == 1) %>% nrow() 
-filter(final_results, Noisy_Uv == 1) %>% nrow() 
-filter(final_results, Slope_UV == 1) %>% nrow() 
+filter(final_results, Oxygen_signal == 1) %>% nrow() 
+filter(final_results, Noisy_red == 1) %>% nrow() 
+filter(final_results, Noisy_blue == 1) %>% nrow() 
+filter(final_results, Negative_uv_slope == 1) %>% nrow() 
 
 # Save all results 
 
-write.csv(file = 'Outputs/GLORIA_qc_flags.csv', x = final_results, na = 'NaN')
+write.csv(file = 'Outputs/GLORIA_qc_flags.csv', x = final_results, na = 'NaN', row.names = F)
 
 
 
